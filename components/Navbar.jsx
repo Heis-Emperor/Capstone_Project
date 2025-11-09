@@ -16,7 +16,7 @@ const Navbar = () => {
   const { count } = useCart();
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full bg-primary/80 backdrop-blur-md border-b">
-      <div className="flex gap-2 mx-auto max-w-[1200px] px-6 py-4 justify-between">
+      <div className="flex gap-4 mx-auto max-w-[1200px] px-6 py-4 justify-between items-center">
           <Link href={"/"} className="flex gap-2 items-center font-semibold text-primary-foreground">
             <ShoppingBag className="w-5 h-5" />
             DeEmpire
@@ -37,20 +37,20 @@ const Navbar = () => {
             </Link>
           </nav>
             
-          <div className="flex gap-3">
+          <div className="flex items-center gap-4">
             <Link
               href={"/cart"}
               className="flex gap-2 hover:underline text-[14px] font-normal items-center text-primary-foreground"
             >
-              <ShoppingCart className="w-4.5 h-4.5" />
-              <span> Cart</span>
+              <ShoppingCart className="w-5 h-5" />
+              <span>Cart</span>
               {count > 0 && (
                 <span className="bg-secondary text-secondary-foreground rounded-full px-2 text-[12px] font-semibold">
                   {count}
                 </span>
               )}
             </Link>
-            <div className="md:hidden" >
+            <div className="md:hidden flex items-center" >
               <HamburgerMenu />
             </div>
           </div>

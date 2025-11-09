@@ -35,7 +35,7 @@ const ProductList = ({ product }) => {
         <div className="flex justify-between">
           <p className="flex gap-1 font-light">⭐  {product.rating}</p>
           <p className="flex text-[16px] font-bold">
-            $
+            ₦
             {product.price}{" "}
           </p>
         </div>

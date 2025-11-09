@@ -9,7 +9,7 @@ const HamburgerMenu = () => {
     const drawerRef = useRef(null);
     
     const toggleMenu = useCallback((e) => {
-        e.stopPropagation(); // Prevent event from bubbling up
+        e.stopPropagation();
         setIsOpen(!isOpen);
     }, [isOpen]);
 
@@ -19,13 +19,13 @@ const HamburgerMenu = () => {
         { href: '/contact', label: 'Contact' },
         { href: '/about', label: 'About' },
     ];
-    // Close on outside click
+    
     useEffect(() => {
         function handleOutside(e) {
-            // Skip if menu is not open
+           
             if (!isOpen) return;
             
-            // Close if click is outside both the menu and the button
+           
             const menuContent = drawerRef.current;
             const hamburgerButton = e.target.closest('button');
             
@@ -46,7 +46,7 @@ const HamburgerMenu = () => {
         };
     }, [isOpen]);
 
-    // Lock body scroll when drawer open
+    
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
@@ -57,10 +57,10 @@ const HamburgerMenu = () => {
 
     return (
         <div className="relative">
-            {/* Hamburger Button */}
+           
             <motion.button
                 onClick={toggleMenu}
-                className="relative z-50 flex flex-col justify-center items-center w-10 h-10 hover:bg-primary-foreground/10 rounded-lg transition-colors"
+                className="relative z-50 w-10 h-10 hover:bg-white/10 rounded-lg transition-colors text-white"
                 aria-label={isOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
@@ -68,39 +68,41 @@ const HamburgerMenu = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-                <motion.span
-                    initial={false}
-                    animate={{ 
-                        rotate: isOpen ? 45 : 0,
-                        y: isOpen ? 2 : 0,
-                        backgroundColor: "currentColor"
-                    }}
-                    className="w-6 h-0.5 transition-all duration-200 origin-center"
-                />
-                <motion.span
-                    initial={false}
-                    animate={{ 
-                        opacity: isOpen ? 0 : 1,
-                        backgroundColor: "currentColor"
-                    }}
-                    className="w-6 h-0.5 my-1 transition-all duration-200"
-                />
-                <motion.span
-                    initial={false}
-                    animate={{ 
-                        rotate: isOpen ? -45 : 0,
-                        y: isOpen ? -2 : 0,
-                        backgroundColor: "currentColor"
-                    }}
-                    className="w-6 h-0.5 transition-all duration-200 origin-center"
-                />
+                <div className="relative w-6 h-6 flex items-center justify-center">
+                    <motion.span
+                        initial={false}
+                        animate={{ 
+                            rotate: isOpen ? 45 : 0,
+                            y: isOpen ? 0 : -8,
+                            backgroundColor: "white"
+                        }}
+                        className="absolute w-6 h-0.5 transform transition-all duration-300 origin-center"
+                    />
+                    <motion.span
+                        initial={false}
+                        animate={{ 
+                            opacity: isOpen ? 0 : 1,
+                            backgroundColor: "white"
+                        }}
+                        className="absolute w-6 h-0.5 transform transition-all duration-300"
+                    />
+                    <motion.span
+                        initial={false}
+                        animate={{ 
+                            rotate: isOpen ? -45 : 0,
+                            y: isOpen ? 0 : 8,
+                            backgroundColor: "white"
+                        }}
+                        className="absolute w-6 h-0.5 transform transition-all duration-300 origin-center"
+                    />
+                </div>
             </motion.button>
 
-            {/* Menu Panel */}
+           
             <AnimatePresence>
                 {isOpen && (
                     <>
-                        {/* Backdrop */}
+                       
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 0.3 }}
@@ -109,7 +111,7 @@ const HamburgerMenu = () => {
                             onClick={() => setIsOpen(false)}
                         />
 
-                        {/* Menu Content */}
+                        
                         <motion.div
                             ref={drawerRef}
                             initial={{ x: "100%", opacity: 0 }}

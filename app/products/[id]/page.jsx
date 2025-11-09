@@ -34,7 +34,7 @@ export default async function ProductPage({ params }) {
             <div className="space-y-4">
                 <h1 className="text-2xl font-semibold">{product.title}</h1>
                 <p className="text-muted-foreground">Category: {product.category}</p>
-                <div className="text-3xl font-bold">${product.price.toFixed(2)}</div>
+                <div className="text-3xl font-bold">₦{product.price.toFixed(2)}</div>
                 <p className="leading-relaxed">{product.description}</p>
                 <div className="text-sm text-muted-foreground">Rating: ⭐ {product.rating.toFixed(1)}</div>
                 <div>
